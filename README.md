@@ -2,6 +2,16 @@
 
 # Heron
 
+## Building streaming library topology
+
+Run from `contrib/kafka9/examples`:
+
+```
+./build-topologies.sh
+```
+
+Then find your streaming library in `dist/topologies` dir
+
 Heron is realtime analytics platform developed by Twitter. It is the direct
 successor of [Apache Storm](http://storm.apache.org), built to be backwards
 compatible with Storm's [topology API](http://storm.apache.org/tutorial.html)

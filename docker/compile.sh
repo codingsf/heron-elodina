@@ -17,11 +17,13 @@ pack_topology() {
     echo "Building required topologies and including to /dist"
     bazel build //contrib/kafka9/examples/src/java:kafka-09-mirror_deploy.jar
     bazel build //contrib/kafka9/examples/src/java:kafka-08-mirror_deploy.jar
+    bazel build //contrib/kafka9/examples/src/java:streaming-library-demo_deploy.jar
 
     mkdir -p /dist/topologies
 
     cp ./bazel-bin/contrib/kafka9/examples/src/java/kafka-08-mirror_deploy.jar /dist/topologies
     cp ./bazel-bin/contrib/kafka9/examples/src/java/kafka-09-mirror_deploy.jar /dist/topologies
+    cp ./bazel-bin/contrib/kafka9/examples/src/java/streaming-library-demo_deploy.jar /dist/topologies
 }
 
 pack_release() {
