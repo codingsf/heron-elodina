@@ -48,6 +48,7 @@ public class StreamingLibraryBolt extends BaseRichBolt {
         slClient = new Client<>(discoveryUrl, user,
                 token, new StringSerializer(), new StringDeserializer(),
                 new StringSerializer(), new StringDeserializer());
+        slClient.initZipkinTracing(null);
     }
 
     @Override
