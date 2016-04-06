@@ -1,16 +1,41 @@
 [![Build Status](https://travis-ci.com/twitter/heron.svg?token=woUsyvMQCWdrt9jhGR7x&branch=master)](https://travis-ci.com/twitter/heron)
 
-# Heron
+# Heron topology build branch
 
-## Building streaming library topology
+## General info
 
-Run from `contrib/kafka9/examples`:
+Currently it is pretty straightforward to build topologies inside the Heron project. _The only requirement is to have 
+Docker set up on your machine._ So first thing to do is to make sure you've written your topologies and placed them to 
+the dir: `contrib/kafka9/examples/src/java`. Luckily, Heron topology API completely corresponds to the Storm topology 
+API, so refer to Storm docs on how to build them. There are also some examples which this branch contains:
+
+* Kafka 0.9 Mirror topology
+* Kafka 0.8 Mirror topology
+* Elodina Streaming Library demo topology
+
+The Docker image that will run the build process will build all the fat jars, targets for which are placed in the 
+`contrib/kafka9/examples/src/java` directory's Bazel `BUILD` file, so if new topologies are introduced, their targets 
+should be specified there.
+
+## Managing dependencies
+
+External dependencies are also being managed in the pretty straightforward fashion. All the external dependencies are 
+placed to the `3rdparty` dir. So you may place jar dependencies there, and provide the appropriate `BUILD` file, so you 
+may use the file in your builds. So, at the end it comes down to simply managing the jar files. For example, to make 
+streaming library topology use different version of the streaming library, just replace the 
+`3rdparty/streaming-library/saw-156.jar` file with the new streaming library jar you've built.
+
+## Build
+
+In order to build, run from `contrib/kafka9/examples`:
 
 ```
 ./build-topologies.sh
 ```
 
-Then find your streaming library in `dist/topologies` dir
+Then find your topologies in `dist/topologies` dir.
+
+# Heron
 
 Heron is realtime analytics platform developed by Twitter. It is the direct
 successor of [Apache Storm](http://storm.apache.org), built to be backwards
