@@ -30,7 +30,6 @@ java_binary(
         "//3rdparty/streaming-library:streaming-library-java",
         "//heron/api/src/java:api-java-nl",
         "//contrib/kafka9/heron-kafka/src/java:heron-kafka-08-java",
-        "//contrib/kafka9/heron-kafka/src/java:heron-kafka-common-java",
         "//3rdparty/logging:slf4j-api-java"
     ],
 )
